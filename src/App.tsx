@@ -6,7 +6,8 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 
 const TOTAL_SLIDES = 7;
-const END_BG = '/slide-7.png';
+const BASE_URL = import.meta.env.BASE_URL || '/';
+const END_BG = `${BASE_URL}slide-7.png`;
 const INSTAGRAM_URL = 'https://www.instagram.com/xu_liw/';
 const YOUTUBE_URL = 'https://www.youtube.com/@liwei180';
 const TITLE = 'ADMISSION';
@@ -317,7 +318,7 @@ export default function App() {
     }
 
     // 索引 0 ~ 5 是第 1 ~ 6 頁
-    const imgSrc = `/slide-${idx + 1}.png`;
+    const imgSrc = `${BASE_URL}slide-${idx + 1}.png`;
     return (
       <div
         key={`slide-${idx + 1}`}
