@@ -17,7 +17,7 @@ export default function App() {
   const [isMobilePortrait, setIsMobilePortrait] = useState(() => {
     if (typeof window === 'undefined') return true;
     const isPortrait = window.innerHeight > window.innerWidth;
-    const isPhoneWidth = window.innerWidth <= 520;
+    const isPhoneWidth = window.innerWidth <= 600;
     return isPortrait && isPhoneWidth;
   });
 
@@ -45,7 +45,7 @@ export default function App() {
   useEffect(() => {
     const handleResizeOrOrientation = () => {
       const isPortrait = window.innerHeight > window.innerWidth;
-      const isPhoneWidth = window.innerWidth <= 520;
+      const isPhoneWidth = window.innerWidth <= 600;
       setIsMobilePortrait(isPortrait && isPhoneWidth);
     };
 
@@ -266,19 +266,45 @@ export default function App() {
       return (
         <div
           key="slide-end"
-          className="w-screen h-screen h-[100dvh] relative flex items-center justify-center overflow-hidden bg-black select-none shrink-0"
-          style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
+          className="relative flex items-center justify-center bg-black overflow-hidden select-none shrink-0"
+          style={{
+            width: '100vw',
+            height: '100dvh',
+            boxSizing: 'border-box',
+            paddingTop: 'env(safe-area-inset-top, 0px)',
+            paddingBottom: 'env(safe-area-inset-bottom, 0px)',
+            paddingLeft: 'env(safe-area-inset-left, 0px)',
+            paddingRight: 'env(safe-area-inset-right, 0px)',
+          }}
         >
           <img
             src={END_BG}
             alt=""
-            className="absolute inset-0 w-full h-full object-contain block pointer-events-none select-none z-0"
+            className="block pointer-events-none select-none"
+            style={{
+              maxWidth: '100%',
+              maxHeight: '100%',
+              width: 'auto',
+              height: 'auto',
+              objectFit: 'contain',
+              minWidth: 0,
+              minHeight: 0,
+              flexShrink: 1,
+              display: 'block',
+              margin: 'auto',
+            }}
           />
 
-          <div className="relative z-10 flex items-center justify-center gap-6">
+          <div
+            className="absolute inset-0 z-10 flex items-center justify-center gap-6 pointer-events-none"
+            style={{
+              paddingTop: 'env(safe-area-inset-top, 0px)',
+              paddingBottom: 'env(safe-area-inset-bottom, 0px)',
+            }}
+          >
             <button
               onClick={handleShare}
-              className="w-14 h-14 rounded-full flex items-center justify-center text-white glass-btn cursor-pointer outline-none select-none"
+              className="w-14 h-14 rounded-full flex items-center justify-center text-white glass-btn cursor-pointer outline-none select-none pointer-events-auto"
               title="分享"
               aria-label="分享"
             >
@@ -291,7 +317,7 @@ export default function App() {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-14 h-14 rounded-full flex items-center justify-center text-white glass-btn cursor-pointer outline-none select-none"
+              className="w-14 h-14 rounded-full flex items-center justify-center text-white glass-btn cursor-pointer outline-none select-none pointer-events-auto"
               title="Instagram"
               aria-label="Instagram"
             >
@@ -304,7 +330,7 @@ export default function App() {
               href={YOUTUBE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-14 h-14 rounded-full flex items-center justify-center text-white glass-btn cursor-pointer outline-none select-none"
+              className="w-14 h-14 rounded-full flex items-center justify-center text-white glass-btn cursor-pointer outline-none select-none pointer-events-auto"
               title="YouTube"
               aria-label="YouTube"
             >
@@ -322,12 +348,33 @@ export default function App() {
     return (
       <div
         key={`slide-${idx + 1}`}
-        className="w-screen h-screen h-[100dvh] relative flex items-center justify-center bg-black overflow-hidden select-none shrink-0"
+        className="relative flex items-center justify-center bg-black overflow-hidden select-none shrink-0"
+        style={{
+          width: '100vw',
+          height: '100dvh',
+          boxSizing: 'border-box',
+          paddingTop: 'env(safe-area-inset-top, 0px)',
+          paddingBottom: 'env(safe-area-inset-bottom, 0px)',
+          paddingLeft: 'env(safe-area-inset-left, 0px)',
+          paddingRight: 'env(safe-area-inset-right, 0px)',
+        }}
       >
         <img
           src={imgSrc}
           alt=""
-          className="w-full h-full object-contain block pointer-events-none select-none"
+          className="block pointer-events-none select-none"
+          style={{
+            maxWidth: '100%',
+            maxHeight: '100%',
+            width: 'auto',
+            height: 'auto',
+            objectFit: 'contain',
+            minWidth: 0,
+            minHeight: 0,
+            flexShrink: 1,
+            display: 'block',
+            margin: 'auto',
+          }}
         />
 
         {/* 第 1 頁（idx === 0）手勢提示 */}
