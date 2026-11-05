@@ -272,7 +272,7 @@ export default function App() {
           <img
             src={END_BG}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover block pointer-events-none select-none z-0"
+            className="absolute inset-0 w-full h-full object-contain block pointer-events-none select-none z-0"
           />
 
           <div className="relative z-10 flex items-center justify-center gap-6">
@@ -327,7 +327,7 @@ export default function App() {
         <img
           src={imgSrc}
           alt=""
-          className="w-full h-full object-cover block pointer-events-none select-none"
+          className="w-full h-full object-contain block pointer-events-none select-none"
         />
 
         {/* 第 1 頁（idx === 0）手勢提示 */}
